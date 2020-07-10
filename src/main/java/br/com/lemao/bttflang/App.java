@@ -8,16 +8,20 @@ import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
+import br.com.lemao.bttflang.parser.BttfParser;
+
 public class App {
 
 	public static void main(String[] args) throws IOException {
 		// Source file
 		StringBuilder source = new StringBuilder();
-		source.append("YEAH, WELL, HISTORY IS GONNA CHANGE"); // Begin Main
-		source.append("DOC, YOU GOTTA LISTEN TO ME Hello World"); // Print
+		source.append("YEAH, WELL, HISTORY IS GONNA CHANGE "); // Begin Main
+		source.append("DOC, YOU GOTTA LISTEN TO ME \"Hello World\" "); // Print
 		source.append("GUESS YOU GUYS AREN’T READY FOR THAT YET"); // End Main
 		
 		// Parse the file
+		BttfParser bttfParser = new BttfParser();
+		bttfParser.parse(source.toString());
 		
 		// Create the main method with the statements from the parsed file
 		MethodSpec main = MethodSpec.methodBuilder("main")
